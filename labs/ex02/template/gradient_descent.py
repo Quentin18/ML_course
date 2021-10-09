@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 """Gradient Descent"""
-import costs
+from costs import compute_loss
 
 
 def compute_gradient(y, tx, w):
     """Compute the gradient."""
-    N = len(y)
+    n = len(y)
     e = y - (tx @ w)
-    return -(tx.T @ e) / N
+    return -(tx.T @ e) / n
 
 
 def gradient_descent(y, tx, initial_w, max_iters, gamma):
@@ -18,7 +18,7 @@ def gradient_descent(y, tx, initial_w, max_iters, gamma):
     w = initial_w
     for n_iter in range(max_iters):
         grad = compute_gradient(y, tx, w)
-        loss = costs.compute_loss(y, tx, w)
+        loss = compute_loss(y, tx, w)
         w = w - gamma * grad
         # store w and loss
         ws.append(w)

@@ -8,8 +8,8 @@ def compute_loss(y, tx, w, mae=False):
 
     You can calculate the loss using mse or mae.
     """
-    N = len(y)
     e = y - (tx @ w)
     if mae:
-        return np.sum(abs(e)) / N
-    return (e @ e) / (2 * N)
+        return np.mean(np.abs(e))
+    n = len(y)
+    return (e @ e) / (2 * n)
