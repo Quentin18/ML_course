@@ -2,3 +2,5 @@ ipywidgets
 matplotlib
 numpy
 pandas
+torch
+torchvision
