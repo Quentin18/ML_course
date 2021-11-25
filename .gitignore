@@ -109,3 +109,6 @@ ENV/
 
 # Images
 *.png
+
+# Data dir
+labs/ex10/data
