@@ -5,6 +5,7 @@ import shutil
 import numpy as np
 from matplotlib.pyplot import imread
 
+
 def load_data():
     """Load data and convert it to the metrics system."""
     path_dataset = "faithful.csv"
@@ -33,17 +34,22 @@ def load_image(path):
     return imread(path)
 
 
-
 def build_distance_matrix(data, mu):
-    """builds a distance matrix.
-    
+    """Builds a distance matrix.
+
     Args:
-        data: numpy array of shape = (N, d). original data. 
-        mu:   numpy array of shape = (k, d). Each row corresponds to a cluster center.
+        data: numpy array of shape = (N, d). Original data.
+        mu: numpy array of shape = (k, d).
+        Each row corresponds to a cluster center.
+
     Returns:
-        squared distances matrix,  numpy array of shape (N, k):
-            row number i column j corresponds to the squared distance of datapoint i with cluster center j.
+        numpy array of shape (N, k):
+            squared distances matrix, the value row i column j corresponds to
+            the squared distance of datapoint i with cluster center j.
     """
-    ####################################
-    ### ___ Enter your code here ___ ###
-    ####################################
+    n, k = data.shape[0], mu.shape[0]
+    distances = np.zeros((n, k))
+    for i in range(n):
+        for j in range(k):
+            distances[i, j] = np.linalg.norm(data[i, :] - mu[j, :]) ** 2
+    return distances
