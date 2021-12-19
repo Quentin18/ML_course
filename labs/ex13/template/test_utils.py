@@ -10,6 +10,7 @@ to your exercise.
 This uses https://docs.python.org/3/library/doctest.html.
 """
 
+
 def test(f):
     """Run unit tests defined in a function's docstring (doctests)"""
     tests = doctest.DocTestFinder().find(f)
@@ -20,7 +21,7 @@ def test(f):
         sys.stdout = io.StringIO()
 
         orig_rng_state = np.random.get_state()
-        
+
         try:
             np.random.seed(1)
             results: doctest.TestResults = doctest.DocTestRunner().run(test)
